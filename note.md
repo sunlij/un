@@ -2,7 +2,8 @@
     git init 把当前目录变成git可以管理的仓库  
     git status 查看仓库当前状态  
     git add 《file》 添加修改  
-    git commit -m "write something" 提交修改并注释  
+    git commit -m "write something" 提交修改并注释
+    git commit --amend 修改最近一次的提交
     git diff 《file》 查看文件差异  
 
     git branch 查看当前分支  
@@ -16,7 +17,10 @@
     git remote -v 所有远程主机名和网址    
     git remote show origin 查看远程 (可以看到本地和远程对应关系) <origin为远程主机名>  
     git remote prune origin 删除本地库中这些相比较远程库中已经不存在的分支 <origin为远程主机名>  
-    git remote add origin [远程仓库地址] 本地与远程仓库关联  
+    git remote add origin [远程仓库地址] 本地与远程仓库关联(添加远程仓库)
+    git remote set-url origin <URL> 更换远程仓库地址
+    git remote set-url --add origin <url2> 为远程仓库添加其他地址
+    
 
     git pull <远程主机名> <远程分支名>:<本地分支名> 取回远程主机某个分支的更新，再与本地的指定分支合并。  
     git push <远程主机名> <本地分支名>:<远程分支名> 将本地分支的更新，推送到远程主机。 !!注意两者差异!!  
@@ -38,18 +42,22 @@
 
     git rm [文件名] 删除文件  
 
-    git stash 把当前的工作状态暂存起来  
+    git stash 把当前的工作状态暂存起来
+    git stash save [描述] 把当前的工作状态暂存起来
     git stash list 查看暂存的工作状态  
     git stash apply 恢复暂存的内容，但是恢复后，stash内容并不删除  
     git stash drop 删除暂存  
     git stash pop 恢复的同时把stash内容也删除  
-    git stash apply stash@{0} 恢复指定的暂存内容  
+    git stash apply stash@{0} 恢复指定的暂存内容
+    git stash show -p stash@{1} 是查看第二最近stash的变化
 
     git tag 查看所有标签  
     git tag [标签名] 为当前分支创建标签  
     git show [标签名] 显示标签具体信息  
     git tag [标签名] [commit ID] 为某一次提交创建标签  
-    git tag -a [标签名] -m "描述信息" [commit ID] 为某一次提交创建有说明的标签  
+    git tag -a [标签名] -m "描述信息" [commit ID] 为某一次提交创建有说明的标签
+    git tag -d [tagName] 删除本地标签
+    
 
     git config 用于git相关设置  
     git config --list git设置显示 --local 显示本地   
@@ -64,12 +72,19 @@
 
     git log 查看记录
     git reflog 查看操作记录  
-    git log --pretty=oneline 查看记录（每个一行显示）  
+    git log --pretty=oneline 查看记录（每个一行显示）
+    git log -- [file] 查看文件的提交记录
 
-    git log dev ^master 查看dev中有，而dev中没有的内容  
+    git log dev ^master 查看dev中有，而master中没有的内容  
     git log master ^dev 查看master中有，而dev中没有的内容   
     git log master..dev 查看 dev 中比 master 中多提交了哪些内容
     git log dev...master 查看其中一个比另一个多提交什么  
+    
+    git log -- filename  查看该文件的提交记录  
+    git log filename 查看该文件的提交记录  
+    git log -p filename 可以显示该文件每次提交的diff  
+    git show [commit-id] filename 查看某次提交中的某个文件变化  
+    
 
 
 ## 命令行释意
